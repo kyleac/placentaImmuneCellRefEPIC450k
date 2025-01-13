@@ -1,0 +1,64 @@
+---
+title: "placentaImmuneCellRefEPIC450k Vignette"
+author: "Kyle Abraham Campbell"
+date: "2024-12-03"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{placentaImmuneCellRefEPIC450k Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+placentaImmuneCellRefEPIC450k contains a Illumina DNA methylation microarray-based
+reference meant for use in estimating the cell composition of whole placenta
+villous tissue samples in epidemiological studies.
+
+This package is a companion package to "Placental and Immune Cell DNA
+Methylation Reference Panel for Bulk Tissue Cell Composition Estimation in
+Epidemiological Studies", DOI:http://dx.doi.org/10.1080/15592294.2024.2437275.
+
+Upon loading the library, a DNA methylation signature matrix called "ref" will be loaded into memory,
+which contains a 721 row (each row represents a common CpG from the Illumina
+450k and EPIC DNA methylation microarrays) by 12 column (each column represents
+a placenta or maternal immune cell type present at the maternal-fetal interface)
+matrix of beta values expected for each cell type at that CpG.
+
+This reference includes 5 placental cell types (cytotrophoblast, endothelial, Hofbauer, stromal, and syncytiotrophoblast), 6 peripheral immune cell types (B cell, CD4T, CD8T, monocyte, neutrophil, and natural killer), and nucleated red blood cells. 
+
+## Application
+This reference is built for plug and play use with the EpiDISH deconvolution package, but can be used with any deconvolution algorithm.
+```{r install_packages, eval = F}
+BiocManager::install("placentaImmuneCellRefEPIC450k")
+BiocManager::install("EpiDISH")
+library(EpiDISH)
+```
+
+```{r load_packages}
+library(placentaImmuneCellRefEPIC450k)
+```
+
+Simply by loading the placentaImmuneCellRefEPIC450k package, you will be ready to deconvolute your bulk tissue beta matrix with EpiDISH.
+```{r, eval = F}
+estimates <- epidish(beta.m = bulk,
+                     ref.m = ref)
+```
+
+For advanced users who would like to create their own reference using our data, the full cell type-specific data and metadata can be manually downloaded from GEO Accession number GSE271697. Specifically, GSE271697_beta.tsv.gz_beta.tsv.gz. Unfortuantely, due to file size limitations, we cannot host this file directly on GitHub.
+
+We still provide the phenotype metadata readily accessible here.
+```{r}
+data(pd, package = "placentaImmuneCellRefEPIC450k") # Metadata
+head(p.pd)
+```
+
+Session info:
+```{r}
+sessionInfo()
+```
+

@@ -1,0 +1,35 @@
+Package: placentaImmuneCellRefEPIC450k
+Type: Package
+Title: Placenta and Immune Cell Type DNA Methylation Microarray Deconvolution Reference
+Version: 0.1.0
+Authors@R: 
+    c(
+      person("Kyle", "Campbell", email = "kyleac@umich.edu", role = c("aut", "cre"),
+      comment=c(ORCID="
+      https://orcid.org/0000-0002-1836-0341")),
+      person("Kelly", "Bakulski", email = "bakulski@umich.edu", role = c("ctb"),
+      comment=c(ORCID="
+      https://orcid.org/0000-0002-9605-6337")
+      )
+      )
+Description: Companion data package to "Placental and Immune Cell DNA
+    Methylation Reference Panel for Bulk Tissue Cell Composition Estimation in
+    Epidemiological Studies." This package provides the signature cell type matrix
+    of cell type-defining CpGs common to the 450k and EPIC microarrays for
+    5 placental (cytotrophoblast, endothelial, Hofbauer, stromal, and
+    syncytiotrophoblast), 6 peripheral immune (B cell, CD4T, CD8T, monocyte,
+    neutrophil, and natural killer), and nucleated red blood cell types. The
+    signature matrix is designed for plug and play use with EpiDISH's epidish(ref.m)
+    argument, Bioconductor R package, DOI <10.18129/B9.bioc.EpiDISH>. This data
+    package also includes the cell type samples used to create the matrix so
+    other users can adapt it to their needs, if desired.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+LazyDataCompression:gzip
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: utils
+biocViews: DNAMethylation, MethylationArray, Microarray, Software, TissueMicroarray
