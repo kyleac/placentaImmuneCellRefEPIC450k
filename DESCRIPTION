@@ -1,7 +1,7 @@
 Package: placentaImmuneCellRefEPIC450k
 Type: Package
 Title: Placenta and Immune Cell Type DNA Methylation Microarray Deconvolution Reference
-Version: 0.1.0
+Version: 0.99.0
 Authors@R: 
     c(
       person("Kyle", "Campbell", email = "kyleac@umich.edu", role = c("aut", "cre"),
